@@ -47,6 +47,13 @@ class DepthFisrt:
             print('\n Path cost: ' + str(self.pathCost))
             print('\n Goal State coordinate: ' + str(self.goalState))
             
+            print()
+            
+            for x in range(len(self.maze)):
+                for y in range(len(self.maze[x])):
+                    print(self.maze[x][y], end=' ')
+                print()
+            
         else:
                
             if nextStateRight == 0:
