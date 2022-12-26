@@ -18,10 +18,25 @@ class DepthFisrt:
         
         # Find path in the maze. 
         
-        nextStateRight = self.maze[state[0]][state[1] + 1]
-        nextStateLeft = self.maze[state[0]][state[1] - 1]
-        nextStateUp = self.maze[state[0] - 1][state[1]]
-        nextStateDown = self.maze[state[0] + 1][state[1]]
+        if (state[1] + 1) < len(self.maze):
+            nextStateRight = self.maze[state[0]][state[1] + 1]
+        else:
+            nextStateRight = -1
+        
+        if (state[1] - 1) < len(self.maze):
+            nextStateLeft = self.maze[state[0]][state[1] - 1]
+        else:
+            nextStateLeft = -1
+        
+        if (state[0] - 1) < len(self.maze):
+            nextStateUp = self.maze[state[0] - 1][state[1]]
+        else:
+            nextStateUp = -1
+        
+        if (state[0] + 1) < len(self.maze):
+            nextStateDown = self.maze[state[0] + 1][state[1]]
+        else:
+            nextStateDown = -1
                
         if nextStateRight == 2 or nextStateLeft == 2 or nextStateUp == 2 or nextStateDown == 2:
             
@@ -91,6 +106,5 @@ class DepthFisrt:
                     self.initialState = [x, y]           
         
         self.action(self.initialState)
-                
         
         
