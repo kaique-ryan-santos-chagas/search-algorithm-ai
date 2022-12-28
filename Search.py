@@ -4,9 +4,9 @@ from Stack import Stack
 
 class DepthFisrt:
     
-    def __init__(self):
+    def __init__(self, maze):
         
-        self.maze = [[4, 3, 4, 20, 8, 15], [0, 1, 0, 11, 9, 10], [0, 4, 7, 13, 20, 8], [0, 0, 0, 0, 4, 20], [2, 0, 0, 0, 0, 15]]
+        self.maze = maze
         self.frontier = Stack()
         self.pathCost = 0
         self.initialState = [0, 0]
@@ -108,9 +108,13 @@ class DepthFisrt:
             
             print('\n Frontier: ' + self.frontier.toString())
             
-            time.sleep(2)
-            
-            self.transitionModel() 
+            if(self.frontier.toString() == 'Stack empty.'):
+                
+                print('\n No solution.')
+                
+            else:
+                time.sleep(2)
+                self.transitionModel() 
         
         
     def transitionModel(self):
@@ -136,4 +140,7 @@ class DepthFisrt:
         
         self.action(self.initialState)
         
+        
+        
+
         
