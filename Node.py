@@ -1,4 +1,4 @@
-# Studying Data structure in Python language.
+# Studying Data structure Node to AI course.
 
 class Node:
     

@@ -6,7 +6,7 @@ class DepthFisrt:
     
     def __init__(self):
         
-        self.maze = [[1, 3, 4, 20, 8, 15], [0, 0, 0, 11, 9, 10], [0, 4, 7, 13, 20, 8], [0, 0, 0, 0, 2, 20], [0, 0, 0, 0, 0, 15]]
+        self.maze = [[4, 3, 4, 20, 8, 15], [0, 1, 0, 11, 9, 10], [0, 4, 7, 13, 20, 8], [0, 0, 0, 0, 4, 20], [2, 0, 0, 0, 0, 15]]
         self.frontier = Stack()
         self.pathCost = 0
         self.initialState = [0, 0]
@@ -16,31 +16,53 @@ class DepthFisrt:
         
     def action(self, state):
         
+        goalStateCoordinate = [None, None]
+        
         # Find path in the maze. 
         
         if (state[1] + 1) < len(self.maze):
+            
             nextStateRight = self.maze[state[0]][state[1] + 1]
+            
+            if nextStateRight == 2:
+                goalStateCoordinate = [state[0], state[1] + 1]
+                
         else:
-            nextStateRight = -1
+            nextStateRight = None
         
         if (state[1] - 1) < len(self.maze):
+            
             nextStateLeft = self.maze[state[0]][state[1] - 1]
+            
+            if nextStateLeft == 2:
+                goalStateCoordinate = [state[0], state[1] - 1]
+                
         else:
-            nextStateLeft = -1
+            nextStateLeft = None
         
         if (state[0] - 1) < len(self.maze):
+            
             nextStateUp = self.maze[state[0] - 1][state[1]]
+            
+            if nextStateUp == 2:
+                goalStateCoordinate = [state[0] - 1, state[1]]
+                
         else:
-            nextStateUp = -1
+            nextStateUp = None
         
         if (state[0] + 1) < len(self.maze):
+            
             nextStateDown = self.maze[state[0] + 1][state[1]]
+            
+            if nextStateDown == 2:
+                goalStateCoordinate = [state[0] + 1, state[1]]
+                
         else:
-            nextStateDown = -1
+            nextStateDown = None
                
         if nextStateRight == 2 or nextStateLeft == 2 or nextStateUp == 2 or nextStateDown == 2:
             
-            self.goalState = [state[0], state[1] + 1]  
+            self.goalState = goalStateCoordinate
             self.pathCost = len(self.explored)
             
             print('\n We found it!')
