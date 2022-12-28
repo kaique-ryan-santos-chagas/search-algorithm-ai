@@ -1,4 +1,3 @@
-import time
 
 from Stack import Stack
 from Queue import Queue
@@ -83,28 +82,28 @@ class DepthFisrt:
                 
                 if state[0] >= 0 and (state[1] + 1) >= 0:
                 
-                    self.maze[state[0]][state[1] + 1] = 1
+                    self.maze[state[0]][state[1] + 1] = '*'
                     self.frontier.push([state[0], state[1] + 1])
                     
             if nextStateLeft == 0:
                 
                 if state[0] >= 0 and (state[1] - 1) >= 0:
                     
-                    self.maze[state[0]][state[1] - 1] = 1
+                    self.maze[state[0]][state[1] - 1] = '*'
                     self.frontier.push([state[0], state[1] - 1])
                     
             if nextStateUp == 0:
                 
                 if (state[0] - 1) >= 0 and state[1] >= 0:
                 
-                    self.maze[state[0] - 1][state[1]] = 1
+                    self.maze[state[0] - 1][state[1]] = '*'
                     self.frontier.push([state[0] - 1, state[1]])
                     
             if nextStateDown == 0:
                 
                 if (state[0] + 1) >= 0 and state[1] >= 0:
                     
-                    self.maze[state[0] + 1][state[1]] = 1
+                    self.maze[state[0] + 1][state[1]] = '*'
                     self.frontier.push([state[0] + 1, state[1]])
             
             print('\n Frontier: ' + self.frontier.toString())
@@ -114,7 +113,6 @@ class DepthFisrt:
                 print('\n No solution.')
                 
             else:
-                time.sleep(2)
                 self.transitionModel() 
         
         
@@ -224,28 +222,28 @@ class BreadthFirst:
                 
                 if state[0] >= 0 and (state[1] + 1) >= 0:
                 
-                    self.maze[state[0]][state[1] + 1] = 1
+                    self.maze[state[0]][state[1] + 1] = '*'
                     self.frontier.append([state[0], state[1] + 1])
                     
             if nextStateLeft == 0:
                 
                 if state[0] >= 0 and (state[1] - 1) >= 0:
                     
-                    self.maze[state[0]][state[1] - 1] = 1
+                    self.maze[state[0]][state[1] - 1] = '*'
                     self.frontier.append([state[0], state[1] - 1])
                     
             if nextStateUp == 0:
                 
                 if (state[0] - 1) >= 0 and state[1] >= 0:
                 
-                    self.maze[state[0] - 1][state[1]] = 1
+                    self.maze[state[0] - 1][state[1]] = '*'
                     self.frontier.append([state[0] - 1, state[1]])
                     
             if nextStateDown == 0:
                 
                 if (state[0] + 1) >= 0 and state[1] >= 0:
                     
-                    self.maze[state[0] + 1][state[1]] = 1
+                    self.maze[state[0] + 1][state[1]] = '*'
                     self.frontier.append([state[0] + 1, state[1]])
             
             print('\n Frontier: ' + self.frontier.toString())
@@ -255,7 +253,6 @@ class BreadthFirst:
                 print('\n No solution.')
                 
             else:
-                time.sleep(2)
                 self.transitionModel() 
         
         
