@@ -24,11 +24,9 @@ class Stack:
     def pop(self):
         
         if self.isEmpty():
-            
             return 'Stack empty.'
         
-        else:
-            self.top = self.top.next
+        self.top = self.top.next
                 
         
     def isEmpty(self):

@@ -13,6 +13,8 @@ class DepthFisrt:
         self.goalState = goalState
         self.solution = []
         self.explored = []
+        self.goalStateCoordinate = []
+        self.initialStateCoordinate = []
         
     def action(self, state):
         
@@ -24,7 +26,7 @@ class DepthFisrt:
             
             nextStateRight = self.maze[state[0]][state[1] + 1]
             
-            if nextStateRight == 2:
+            if nextStateRight == self.goalState:
                 goalStateCoordinate = [state[0], state[1] + 1]
                 
         else:
@@ -34,7 +36,7 @@ class DepthFisrt:
             
             nextStateLeft = self.maze[state[0]][state[1] - 1]
             
-            if nextStateLeft == 2:
+            if nextStateLeft == self.goalState:
                 goalStateCoordinate = [state[0], state[1] - 1]
                 
         else:
@@ -44,7 +46,7 @@ class DepthFisrt:
             
             nextStateUp = self.maze[state[0] - 1][state[1]]
             
-            if nextStateUp == 2:
+            if nextStateUp == self.goalState:
                 goalStateCoordinate = [state[0] - 1, state[1]]
                 
         else:
@@ -54,20 +56,20 @@ class DepthFisrt:
             
             nextStateDown = self.maze[state[0] + 1][state[1]]
             
-            if nextStateDown == 2:
+            if nextStateDown == self.goalState:
                 goalStateCoordinate = [state[0] + 1, state[1]]
                 
         else:
             nextStateDown = None
                
-        if nextStateRight == 2 or nextStateLeft == 2 or nextStateUp == 2 or nextStateDown == 2:
+        if nextStateRight == self.goalState or nextStateLeft == self.goalState or nextStateUp == self.goalState or nextStateDown == self.goalState:
             
-            self.goalState = goalStateCoordinate
+            self.goalStateCoordinate = goalStateCoordinate
             self.pathCost = len(self.explored)
             
             print('\n We found it!')
             print('\n Path cost: ' + str(self.pathCost))
-            print('\n Goal State coordinate: ' + str(self.goalState))
+            print('\n Goal State coordinate: ' + str(self.goalStateCoordinate))
             
             print()
             
@@ -81,29 +83,21 @@ class DepthFisrt:
             if nextStateRight == 0:
                 
                 if state[0] >= 0 and (state[1] + 1) >= 0:
-                
-                    self.maze[state[0]][state[1] + 1] = '*'
                     self.frontier.push([state[0], state[1] + 1])
                     
             if nextStateLeft == 0:
                 
                 if state[0] >= 0 and (state[1] - 1) >= 0:
-                    
-                    self.maze[state[0]][state[1] - 1] = '*'
                     self.frontier.push([state[0], state[1] - 1])
                     
             if nextStateUp == 0:
                 
                 if (state[0] - 1) >= 0 and state[1] >= 0:
-                
-                    self.maze[state[0] - 1][state[1]] = '*'
                     self.frontier.push([state[0] - 1, state[1]])
                     
             if nextStateDown == 0:
                 
                 if (state[0] + 1) >= 0 and state[1] >= 0:
-                    
-                    self.maze[state[0] + 1][state[1]] = '*'
                     self.frontier.push([state[0] + 1, state[1]])
             
             print('\n Frontier: ' + self.frontier.toString())
@@ -121,7 +115,8 @@ class DepthFisrt:
         state = self.frontier.getTop()
         print('\n State to explore: ' + str(state))
         
-        self.explored.append(state) 
+        self.explored.append(state)
+        self.maze[state[0]][state[1]] = '*'
         self.frontier.pop()
         
         self.action(state)
@@ -133,11 +128,12 @@ class DepthFisrt:
         
         for x in range(len(self.maze)):
             for y in range(len(self.maze[x])):
-                if self.maze[x][y] == 1:
+                if self.maze[x][y] == self.initialState:
                     print('\n Initial state found at: ' + str(x) + ', ' + str(y))
-                    self.initialState = [x, y]           
-        
-        self.action(self.initialState)
+                    self.initialStateCoordinate = [x, y]     
+
+        self.action(self.initialStateCoordinate)            
+
         
         
         
@@ -153,6 +149,8 @@ class BreadthFirst:
         self.goalState = goalState
         self.solution = []
         self.explored = []
+        self.initialStateCoordinate = []
+        self.goalStateCoordinate = []
         
     def action(self, state):
         
@@ -164,7 +162,7 @@ class BreadthFirst:
             
             nextStateRight = self.maze[state[0]][state[1] + 1]
             
-            if nextStateRight == 2:
+            if nextStateRight == self.goalState:
                 goalStateCoordinate = [state[0], state[1] + 1]
                 
         else:
@@ -174,7 +172,7 @@ class BreadthFirst:
             
             nextStateLeft = self.maze[state[0]][state[1] - 1]
             
-            if nextStateLeft == 2:
+            if nextStateLeft == self.goalState:
                 goalStateCoordinate = [state[0], state[1] - 1]
                 
         else:
@@ -184,7 +182,7 @@ class BreadthFirst:
             
             nextStateUp = self.maze[state[0] - 1][state[1]]
             
-            if nextStateUp == 2:
+            if nextStateUp == self.goalState:
                 goalStateCoordinate = [state[0] - 1, state[1]]
                 
         else:
@@ -194,20 +192,20 @@ class BreadthFirst:
             
             nextStateDown = self.maze[state[0] + 1][state[1]]
             
-            if nextStateDown == 2:
+            if nextStateDown == self.goalState:
                 goalStateCoordinate = [state[0] + 1, state[1]]
                 
         else:
             nextStateDown = None
                
-        if nextStateRight == 2 or nextStateLeft == 2 or nextStateUp == 2 or nextStateDown == 2:
+        if nextStateRight == self.goalState or nextStateLeft == self.goalState or nextStateUp == self.goalState or nextStateDown == self.goalState:
             
-            self.goalState = goalStateCoordinate
+            self.goalStateCoordinate = goalStateCoordinate
             self.pathCost = len(self.explored)
             
             print('\n We found it!')
             print('\n Path cost: ' + str(self.pathCost))
-            print('\n Goal State coordinate: ' + str(self.goalState))
+            print('\n Goal State coordinate: ' + str(self.goalStateCoordinate))
             
             print()
             
@@ -221,29 +219,21 @@ class BreadthFirst:
             if nextStateRight == 0:
                 
                 if state[0] >= 0 and (state[1] + 1) >= 0:
-                
-                    self.maze[state[0]][state[1] + 1] = '*'
                     self.frontier.append([state[0], state[1] + 1])
                     
             if nextStateLeft == 0:
                 
                 if state[0] >= 0 and (state[1] - 1) >= 0:
-                    
-                    self.maze[state[0]][state[1] - 1] = '*'
                     self.frontier.append([state[0], state[1] - 1])
                     
             if nextStateUp == 0:
                 
                 if (state[0] - 1) >= 0 and state[1] >= 0:
-                
-                    self.maze[state[0] - 1][state[1]] = '*'
                     self.frontier.append([state[0] - 1, state[1]])
                     
             if nextStateDown == 0:
                 
                 if (state[0] + 1) >= 0 and state[1] >= 0:
-                    
-                    self.maze[state[0] + 1][state[1]] = '*'
                     self.frontier.append([state[0] + 1, state[1]])
             
             print('\n Frontier: ' + self.frontier.toString())
@@ -262,6 +252,7 @@ class BreadthFirst:
         print('\n State to explore: ' + str(state))
         
         self.explored.append(state) 
+        self.maze[state[0]][state[1]] = '*'
         self.frontier.pop()
         
         self.action(state)
@@ -273,11 +264,12 @@ class BreadthFirst:
         
         for x in range(len(self.maze)):
             for y in range(len(self.maze[x])):
-                if self.maze[x][y] == 1:
+                if self.maze[x][y] == self.initialState:
                     print('\n Initial state found at: ' + str(x) + ', ' + str(y))
-                    self.initialState = [x, y]           
-        
-        self.action(self.initialState)
+                    self.initialStateCoordinate = [x, y]           
+                    break
+                
+        self.action(self.initialStateCoordinate)
         
         
         
