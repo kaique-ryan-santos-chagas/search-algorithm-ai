@@ -1,3 +1,1 @@
-<center>
-# Unformed Search Algorithms 
-</center>
+# <p align="center"> Unformed Search Algorithms </p>
