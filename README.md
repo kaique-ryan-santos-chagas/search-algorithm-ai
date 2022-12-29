@@ -4,6 +4,10 @@
 
 <br>
 
+# <p align="center"> AI Search </p>
+
+<p align="center"></p>
+
 * ## Depth First Algorithm 
 
 * Use the Stack data structure (first in - last out).
