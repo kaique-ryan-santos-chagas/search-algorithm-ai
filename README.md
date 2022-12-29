@@ -4,7 +4,7 @@
 
 # <p align="center"> AI Search </p>
 
-<p align="center"> <img src="https://user-images.githubusercontent.com/59677362/209995419-7993d683-b493-4e9c-a179-8aab755e4abe.png" width="100" /></p>
+<p align="center"> <img src="https://user-images.githubusercontent.com/59677362/209995419-7993d683-b493-4e9c-a179-8aab755e4abe.png" /></p>
 
 * ## Depth First Algorithm 
 
