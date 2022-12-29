@@ -6,5 +6,12 @@
 
 * ## Depth First Algorithm 
 
+* Use the Stack data structure (first in - last out).
+* Search depth into the path.
+* Find the goal state coordinate.
 
 * ## Breadth First Algorithm
+
+* Use the Queue data structure (first in - first out).
+* Search alternate states in the path.
+* Find the goal state coordinate. 
