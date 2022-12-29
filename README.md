@@ -6,6 +6,12 @@
 
 <p align="center"> <img src="https://user-images.githubusercontent.com/59677362/209995419-7993d683-b493-4e9c-a179-8aab755e4abe.png" width="500" /></p>
 
+<br>
+
+* ## Node
+
+* Data structure that turn possbible indicates data in alternatives positions in memory. 
+
 * ## Depth First Algorithm 
 
 * Use the Stack data structure (first in - last out).
