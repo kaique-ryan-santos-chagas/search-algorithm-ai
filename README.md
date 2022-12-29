@@ -4,7 +4,7 @@
 
 <br>
 
-## * Depth First Algorithm 
+* ## Depth First Algorithm 
 
 
-## * Breadth First Algorithm
+* ## Breadth First Algorithm
